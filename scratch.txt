@@ -1,0 +1,4 @@
+client.on("ready", () => {
+  client.channels.fetch("448400100591403024")
+    .then(channel => console.log(channel.name));
+});

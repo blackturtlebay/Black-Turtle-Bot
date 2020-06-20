@@ -1,20 +1,6 @@
-//connect mongodb database
-const dbusername = process.env.dbusername;
-const dbpassword = process.env.dbpassword;
-const url = "mongodb+srv://dbusername:dbpassword@clustername.mongodb.net/test?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true";
-const mclient = new MongoClient(url);
+const MongoClient = require('mongodb').MongoClient;
+const mongo_username = process.env.MONGO_USERNAME
+const mongo_password = process.env.MONGO_PASSWORD
 
-async function run() {
-    try {
-        await mclient.connect();
-        console.log("Connected correctly to server");
-
-    } catch (err) {
-        console.log(err.stack);
-    }
-    finally {
-        await mclient.close();
-    }
-}
-
-run().catch(console.dir);
+const uri = "mongodb+srv://dbblackturtlebay:${mongo_password}@blackturtlebay-3ni0l.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
